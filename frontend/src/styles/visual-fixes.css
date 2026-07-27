@@ -1,0 +1,1063 @@
+/* ==================================================
+   NAVBAR Y MARCA SCORELY
+   ================================================== */
+
+.navbar-shell {
+  isolation: isolate;
+}
+
+.navbar {
+  position: relative;
+  overflow: visible;
+  min-height: 62px;
+
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.84) 35%,
+      rgba(247, 247, 245, 0.8) 68%,
+      rgba(234, 240, 255, 0.64) 100%
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 16px 38px
+      rgba(21, 21, 21, 0.075),
+    0 2px 8px
+      rgba(21, 21, 21, 0.035),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.95);
+
+  backdrop-filter:
+    blur(20px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(20px)
+    saturate(145%);
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.6),
+      transparent 38%,
+      rgba(50, 107, 255, 0.04)
+    );
+}
+
+.navbar > * {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar__links {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(243, 243, 241, 0.94),
+      rgba(238, 240, 246, 0.82)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.68);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.9);
+}
+
+.nav-pill {
+  transition:
+    color 180ms ease-out,
+    background 180ms ease-out,
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out;
+}
+
+.nav-pill:hover {
+  transform: translateY(-1px);
+
+  background:
+    rgba(255, 255, 255, 0.72);
+}
+
+.nav-pill--active {
+  background:
+    linear-gradient(
+      145deg,
+      #0c0c0c,
+      #242424
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 7px 16px
+      rgba(21, 21, 21, 0.18),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.13);
+}
+
+.profile-button {
+  transition:
+    background 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.profile-button:hover {
+  transform: translateY(-1px);
+
+  background:
+    rgba(255, 255, 255, 0.64);
+}
+
+.scorely-brand {
+  gap: 11px;
+  letter-spacing: 0.045em;
+}
+
+.scorely-brand__mark {
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #080808,
+      #242424
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 9px 20px
+      rgba(21, 21, 21, 0.2),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0
+      rgba(0, 0, 0, 0.45);
+}
+
+.scorely-brand__mark::before {
+  content: "";
+
+  position: absolute;
+  inset: 4px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 10px;
+}
+
+.scorely-brand__mark::after {
+  content: "";
+
+  position: absolute;
+  width: 30px;
+  height: 30px;
+
+  top: -18px;
+  right: -11px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(50, 107, 255, 0.2);
+
+  filter: blur(2px);
+}
+
+.scorely-brand__letter {
+  position: relative;
+  z-index: 2;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  letter-spacing: -0.05em;
+
+  color: #fff;
+}
+
+.scorely-brand__accent {
+  position: absolute;
+  z-index: 3;
+
+  right: 7px;
+  bottom: 6px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 2px
+    #181818;
+}
+
+.scorely-brand__word {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+}
+
+.avatar {
+  background:
+    linear-gradient(
+      145deg,
+      #0c0c0c,
+      #292929
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.13),
+    0 6px 14px
+      rgba(21, 21, 21, 0.15);
+}
+
+/* ==================================================
+   DASHBOARD
+   ================================================== */
+
+.scorely-dashboard__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.scorely-dashboard__heading h1 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      2.8rem,
+      5vw,
+      4rem
+    );
+}
+
+.scorely-dashboard__season {
+  color: var(--accent);
+}
+
+.scorely-dashboard__create {
+  min-width: 136px;
+}
+
+.scorely-dashboard__top-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 6fr)
+    minmax(140px, 1.4fr)
+    minmax(140px, 1.4fr)
+    minmax(260px, 3fr);
+
+  gap: 16px;
+  align-items: stretch;
+}
+
+.scorely-live-card {
+  min-height: 282px;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px;
+
+  border-radius:
+    var(--radius-bento);
+
+  background: #050505;
+  color: #fff;
+}
+
+.scorely-live-card__content {
+  position: relative;
+  z-index: 2;
+
+  width:
+    min(
+      52%,
+      360px
+    );
+
+  height: 100%;
+  min-height: 226px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scorely-live-card__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+  letter-spacing: 0.08em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+}
+
+.scorely-live-card__copy h2 {
+  max-width: 300px;
+  margin-bottom: 16px;
+
+  font-size:
+    clamp(
+      2rem,
+      3.3vw,
+      3rem
+    );
+
+  line-height: 0.95;
+  color: #fff;
+}
+
+.scorely-live-card__copy p {
+  max-width: 320px;
+  margin: 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  line-height: 1.6;
+}
+
+.scorely-live-card__content > a {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.scorely-live-card__ring {
+  position: absolute;
+  z-index: 1;
+
+  top: -54px;
+  right: -42px;
+
+  width: 285px;
+  height: 285px;
+
+  border:
+    34px solid
+    var(--primary);
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+}
+
+.scorely-live-card__ring::after {
+  content: "";
+
+  position: absolute;
+  inset: 16px;
+
+  border-radius: 50%;
+  background: #050505;
+}
+
+.scorely-live-card__ring > div {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 118px;
+
+  text-align: center;
+}
+
+.scorely-live-card__ring small,
+.scorely-live-card__ring strong {
+  display: block;
+}
+
+.scorely-live-card__ring small {
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+  letter-spacing: 0.13em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+}
+
+.scorely-live-card__ring strong {
+  font-size: 2.3rem;
+  letter-spacing: -0.08em;
+}
+
+.scorely-summary-card,
+.scorely-revenue-card {
+  min-height: 282px;
+
+  padding:
+    24px 20px;
+
+  border-radius:
+    var(--radius-bento);
+}
+
+.scorely-summary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.scorely-summary-card p,
+.scorely-revenue-card p {
+  margin: 0;
+  font-size: 11px;
+
+  color:
+    var(--muted-foreground);
+}
+
+.scorely-summary-card strong {
+  margin-top: 24px;
+
+  font-size: 2.35rem;
+  letter-spacing: -0.08em;
+}
+
+.scorely-summary-card small {
+  margin-top: 7px;
+
+  color:
+    var(--muted-foreground);
+}
+
+.scorely-summary-card--light {
+  background: #fff;
+
+  border:
+    1px solid
+    var(--border);
+}
+
+.scorely-summary-card--dark {
+  background: #050505;
+  color: #fff;
+}
+
+.scorely-summary-card--dark p,
+.scorely-summary-card--dark small {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.56
+    );
+}
+
+.scorely-revenue-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    var(--info-surface);
+
+  color:
+    var(--primary);
+}
+
+.scorely-revenue-card > div:first-child {
+  position: relative;
+  z-index: 2;
+}
+
+.scorely-revenue-card strong {
+  display: block;
+
+  margin-top: 12px;
+
+  font-size:
+    clamp(
+      1.8rem,
+      2.8vw,
+      2.6rem
+    );
+
+  letter-spacing: -0.075em;
+  color: #151515;
+}
+
+.scorely-revenue-card small {
+  color: #5e79c6;
+}
+
+.scorely-revenue-card__bars {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+
+  height: 98px;
+
+  display: flex;
+  align-items: end;
+  gap: 7px;
+}
+
+.scorely-revenue-card__bars span {
+  flex: 1;
+  min-width: 10px;
+
+  border-radius:
+    7px 7px 0 0;
+
+  background:
+    var(--primary);
+}
+
+.scorely-dashboard__bottom-grid {
+  display: grid;
+
+  grid-template-columns:
+    7fr 5fr;
+
+  gap: 16px;
+
+  margin-top: 16px;
+}
+
+.scorely-recent-card,
+.scorely-next-card {
+  min-height: 318px;
+
+  padding: 26px;
+
+  border-radius:
+    var(--radius-bento);
+}
+
+.scorely-recent-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.scorely-recent-card > header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.scorely-recent-card > header a {
+  color: var(--primary);
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.scorely-recent-list {
+  display: grid;
+  margin-top: 18px;
+}
+
+.scorely-recent-list > a {
+  min-height: 74px;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto
+    auto
+    auto;
+
+  align-items: center;
+  gap: 13px;
+
+  border-top:
+    1px solid
+    var(--border);
+}
+
+.scorely-recent-list > a:first-child {
+  border-top: 0;
+}
+
+.scorely-tournament-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 14px;
+
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  background: var(--primary);
+}
+
+.scorely-tournament-icon--2 {
+  background: var(--accent);
+}
+
+.scorely-tournament-icon--3 {
+  background: #151515;
+}
+
+.scorely-recent-list__identity,
+.scorely-recent-list__date {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.scorely-recent-list__identity strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scorely-recent-list__identity small,
+.scorely-recent-list__date small {
+  margin-top: 4px;
+
+  color:
+    var(--muted-foreground);
+}
+
+.scorely-recent-list__date {
+  text-align: right;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+}
+
+.scorely-next-card {
+  background:
+    var(--warning-surface);
+}
+
+.scorely-next-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.scorely-next-card h2 {
+  max-width: 420px;
+  margin: 0;
+}
+
+.scorely-next-card > p {
+  margin:
+    16px 0 32px;
+
+  color: #9a6b61;
+}
+
+.scorely-next-card__icon {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #fff;
+  color: var(--accent);
+}
+
+.scorely-dashboard__mobile-metrics {
+  display: none;
+}
+
+/* ==================================================
+   DEPORTES
+   ================================================== */
+
+.sport-card .card-title-row {
+  min-height: 58px;
+
+  align-items: flex-start;
+
+  margin-bottom: 24px;
+}
+
+.sport-card__mark {
+  margin-bottom: 6px;
+}
+
+.sport-card > .eyebrow {
+  margin-top: 4px;
+  margin-bottom: 9px;
+}
+
+.sport-card__actions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 9px;
+
+  margin-top: 22px;
+}
+
+.sport-card__actions .button {
+  width: 100%;
+  min-height: 44px;
+
+  padding-inline: 14px;
+
+  white-space: nowrap;
+}
+
+/* ==================================================
+   EQUIPOS
+   ================================================== */
+
+.team-card__actions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 9px;
+
+  margin-top: 22px;
+}
+
+.team-card__actions .button {
+  width: 100%;
+  min-height: 44px;
+
+  padding-inline: 14px;
+
+  white-space: nowrap;
+}
+
+.team-card__view-button {
+  grid-column: 1 / -1;
+}
+
+/* ==================================================
+   ESTADO DEL TORNEO
+   ================================================== */
+
+.tournament-status-control {
+  width: 230px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.tournament-status-control > span {
+  padding-left: 12px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.6
+    );
+}
+
+.tournament-status-control select {
+  width: 100%;
+  min-height: 50px;
+
+  padding:
+    0 42px
+    0 16px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  border-radius: 18px;
+
+  background: #272727;
+  color: #fff;
+
+  font-weight: 700;
+}
+
+.tournament-status-control select:focus {
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      50,
+      107,
+      255,
+      0.2
+    );
+}
+
+.tournament-status-control option {
+  background: #fff;
+  color: #151515;
+}
+
+.tournament-hero__top > .input {
+  width: 230px;
+  min-height: 50px;
+
+  padding:
+    0 42px
+    0 16px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  border-radius: 18px;
+
+  background: #272727;
+  color: #fff;
+
+  font-weight: 700;
+}
+
+.tournament-hero__top > .input option {
+  background: #fff;
+  color: #151515;
+}
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media (max-width: 1180px) {
+  .scorely-dashboard__top-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .scorely-live-card,
+  .scorely-revenue-card {
+    grid-column: 1 / -1;
+  }
+
+  .scorely-live-card__content {
+    width:
+      min(
+        58%,
+        420px
+      );
+  }
+}
+
+@media (max-width: 760px) {
+  .scorely-brand__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .scorely-dashboard__heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .scorely-dashboard__create {
+    width: 100%;
+  }
+
+  .scorely-dashboard__top-grid,
+  .scorely-dashboard__bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scorely-live-card,
+  .scorely-revenue-card {
+    grid-column: auto;
+  }
+
+  .scorely-live-card {
+    min-height: 390px;
+  }
+
+  .scorely-live-card__content {
+    width: 100%;
+    min-height: 330px;
+  }
+
+  .scorely-live-card__copy {
+    padding-top: 145px;
+  }
+
+  .scorely-live-card__ring {
+    top: -95px;
+    right: -66px;
+
+    width: 260px;
+    height: 260px;
+  }
+
+  .scorely-summary-card {
+    display: none;
+  }
+
+  .scorely-recent-list > a {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr)
+      auto;
+  }
+
+  .scorely-recent-list__date,
+  .scorely-recent-list .badge {
+    display: none;
+  }
+
+  .scorely-dashboard__mobile-metrics {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-top: 16px;
+  }
+
+  .scorely-dashboard__mobile-metrics article {
+    min-height: 96px;
+
+    padding: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+      auto
+      1fr
+      auto;
+
+    align-items: center;
+    gap: 12px;
+  }
+
+  .scorely-dashboard__mobile-metrics svg {
+    color: var(--primary);
+  }
+
+  .scorely-dashboard__mobile-metrics small {
+    color:
+      var(--muted-foreground);
+  }
+
+  .scorely-dashboard__mobile-metrics strong {
+    font-size: 1.2rem;
+  }
+
+  .team-card__actions,
+  .sport-card__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card__view-button {
+    grid-column: auto;
+  }
+
+  .tournament-status-control,
+  .tournament-hero__top > .input {
+    width: 100%;
+  }
+}

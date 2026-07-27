@@ -1,0 +1,150 @@
+/* ==================================================
+   MARCA SCORELY
+   Corrige la variante clara utilizada en el login.
+   ================================================== */
+
+.scorely-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+}
+
+.scorely-brand__mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      145deg,
+      #080808,
+      #242424
+    );
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  box-shadow:
+    0 9px 20px
+      rgba(21, 21, 21, 0.22),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0
+      rgba(0, 0, 0, 0.45);
+}
+
+.scorely-brand__mark::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.scorely-brand__mark::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: -11px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background:
+    rgba(50, 107, 255, 0.22);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.scorely-brand__letter {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.scorely-brand__accent {
+  position: absolute;
+  z-index: 3;
+  right: 7px;
+  bottom: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #326bff;
+  box-shadow:
+    0 0 0 2px #181818;
+}
+
+.scorely-brand__word {
+  color: #151515;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+}
+
+/* Variante utilizada sobre la fotografía del login */
+
+.scorely-brand--light {
+  color: #ffffff;
+}
+
+.scorely-brand--light .scorely-brand__mark {
+  background:
+    linear-gradient(
+      145deg,
+      #080808,
+      #242424
+    );
+  color: #ffffff;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 10px 24px
+      rgba(0, 0, 0, 0.4),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.16);
+}
+
+.scorely-brand--light .scorely-brand__letter {
+  color: #ffffff;
+}
+
+.scorely-brand--light .scorely-brand__word {
+  color: #ffffff;
+  text-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.32);
+}
+
+.scorely-brand--light .scorely-brand__accent {
+  background: #326bff;
+  box-shadow:
+    0 0 0 2px #181818;
+}
+
+@media (max-width: 760px) {
+  .scorely-brand__mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+
+  .scorely-brand__word {
+    font-size: 12px;
+  }
+}
