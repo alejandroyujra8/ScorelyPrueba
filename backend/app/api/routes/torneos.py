@@ -384,12 +384,10 @@ async def crear_torneo(
                 "El deporte o el formato seleccionado no existe"
             ),
         )
-
     return await buscar_torneo(
         conexion=conexion,
         id_torneo=int(fila["id_torneo"]),
     )
-
 
 @router.patch(
     "/{id_torneo}",
@@ -437,8 +435,14 @@ async def actualizar_torneo(
         "permite_empate": actual.permite_empate,
         "descripcion": actual.descripcion,
     }
-    datos_completos.update(datos.model_dump(exclude_unset=True))
-    datos_validados = TorneoCrear.model_validate(datos_completos)
+
+    datos_completos.update(
+        datos.model_dump(exclude_unset=True)
+    )
+
+    datos_validados = TorneoCrear.model_validate(
+        datos_completos
+    )
 
     await establecer_usuario_aplicacion(
         conexion=conexion,
@@ -512,12 +516,18 @@ async def actualizar_torneo(
                 id_torneo,
             ),
         )
+
         fila = await cursor.fetchone()
+
     except UniqueViolation as error:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="Ya existe otro torneo con ese código o nombre",
+            detail=(
+                "Ya existe otro torneo con ese codigo "
+                "o nombre"
+            ),
         ) from error
+
     except (
         CheckViolation,
         ForeignKeyViolation,
@@ -527,21 +537,23 @@ async def actualizar_torneo(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail=obtener_mensaje_postgresql(
                 error,
-                "PostgreSQL rechazó la actualización del torneo",
+                "PostgreSQL rechazo la actualizacion del torneo",
             ),
         ) from error
 
     if fila is None:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail="El deporte o formato seleccionado no está disponible",
+            detail=(
+                "El deporte o formato seleccionado "
+                "no esta disponible"
+            ),
         )
 
     return await buscar_torneo(
         conexion=conexion,
         id_torneo=id_torneo,
     )
-
 
 @router.patch(
     "/{id_torneo}/estado",
@@ -618,7 +630,6 @@ async def actualizar_estado_torneo(
         id_torneo=id_torneo,
     )
 
-
 @router.post(
     "/{id_torneo}/fases",
     response_model=FaseRespuesta,
@@ -634,10 +645,19 @@ async def crear_fase(
         Path(ge=1),
     ],
 ) -> FaseRespuesta:
-    await buscar_torneo(
+    torneo = await buscar_torneo(
         conexion=conexion,
         id_torneo=id_torneo,
     )
+
+    if torneo.estado_torneo != "BORRADOR":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                "Solo se pueden crear fases cuando "
+                "el torneo esta en estado BORRADOR"
+            ),
+        )
 
     await establecer_usuario_aplicacion(
         conexion=conexion,
@@ -740,7 +760,6 @@ async def crear_fase(
 
     return FaseRespuesta.model_validate(fila)
 
-
 @router.post(
     "/fases/{id_fase}/jornadas",
     response_model=JornadaRespuesta,
@@ -756,6 +775,38 @@ async def crear_jornada(
         Path(ge=1),
     ],
 ) -> JornadaRespuesta:
+    cursor_estado = await conexion.execute(
+        """
+        SELECT
+            estado.codigo AS estado_torneo
+        FROM competencia.fase_torneo fase
+        INNER JOIN competencia.torneo torneo
+            ON torneo.id_torneo = fase.id_torneo
+        INNER JOIN catalogo.estado_torneo estado
+            ON estado.id_estado_torneo =
+               torneo.id_estado_torneo
+        WHERE fase.id_fase_torneo = %s
+        """,
+        (id_fase,),
+    )
+
+    estado_fila = await cursor_estado.fetchone()
+
+    if estado_fila is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="La fase no existe",
+        )
+
+    if estado_fila["estado_torneo"] != "BORRADOR":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                "Solo se pueden crear jornadas cuando "
+                "el torneo esta en estado BORRADOR"
+            ),
+        )
+
     await establecer_usuario_aplicacion(
         conexion=conexion,
         id_usuario=id_usuario,
@@ -840,7 +891,6 @@ async def crear_jornada(
         )
 
     return JornadaRespuesta.model_validate(fila)
-
 
 @router.get(
     "/{id_torneo}/estructura",

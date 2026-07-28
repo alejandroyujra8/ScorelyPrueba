@@ -612,7 +612,7 @@ async def ejecutar_script_sql_simulado(
                 indice += 1
 
                 siguiente_resultado = (
-                    await cursor.nextset()
+                    cursor.nextset()
                 )
 
                 if not siguiente_resultado:

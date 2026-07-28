@@ -188,8 +188,12 @@ export default function TorneoDetailPage() {
     );
   }, [data?.torneo?.formato_codigo, tiposFase]);
 
-  const puedeCrearFase =
+  const puedeModificarEstructura =
     puedeEditar &&
+    data?.torneo?.estado_torneo === "BORRADOR";
+
+  const puedeCrearFase =
+    puedeModificarEstructura &&
     tiposFaseDisponibles.length > 0 &&
     !(
       data?.torneo?.formato_codigo === "PARTIDO_UNICO" &&
@@ -217,6 +221,13 @@ export default function TorneoDetailPage() {
   if (error) return <ErrorState message={error} onRetry={reload} />;
 
   function abrirFase() {
+    if (!puedeModificarEstructura) {
+      setToast(
+        "La estructura solamente puede modificarse cuando el torneo está en BORRADOR.",
+      );
+      return;
+    }
+
     setFormulario({
       tipo_fase_codigo:
         tiposFaseDisponibles[0]?.codigo || "PARTIDO_UNICO",
@@ -227,12 +238,21 @@ export default function TorneoDetailPage() {
       fecha_fin: data.torneo.fecha_fin_torneo,
       descripcion: "",
     });
+
     setModal("fase");
     setErrorFormulario("");
   }
 
   function abrirJornada(fase) {
+    if (!puedeModificarEstructura) {
+      setToast(
+        "No se pueden crear jornadas porque el torneo ya no está en BORRADOR.",
+      );
+      return;
+    }
+
     setFaseSeleccionada(fase);
+
     setFormulario({
       numero_jornada:
         (jornadasPorFase[fase.id_fase_torneo]?.length || 0) + 1,
@@ -241,6 +261,7 @@ export default function TorneoDetailPage() {
       fecha_fin: limiteFechaHora(fase.fecha_fin, true),
       observaciones: "",
     });
+
     setModal("jornada");
     setErrorFormulario("");
   }
@@ -332,24 +353,14 @@ export default function TorneoDetailPage() {
             <Badge value={data.torneo.estado_torneo} />
             <span className="mono">{data.torneo.codigo}</span>
           </div>
-          {puedeEditar && (
-            <Select
-              aria-label="Cambiar estado"
-              value={data.torneo.estado_torneo}
-              onChange={cambiarEstado}
-              disabled={ocupado || estadosDisponibles.length <= 1}
-              title={
-                estadosDisponibles.length <= 1
-                  ? "El torneo se encuentra en un estado final"
-                  : "Seleccione la siguiente transición permitida"
-              }
+          {puedeModificarEstructura && (
+            <button
+              className="journey-add"
+              type="button"
+              onClick={() => abrirJornada(fase)}
             >
-              {estadosDisponibles.map((estado) => (
-                <option key={estado.codigo} value={estado.codigo}>
-                  {estado.nombre}
-                </option>
-              ))}
-            </Select>
+              <Plus size={15} /> Añadir jornada
+            </button>
           )}
         </div>
 
